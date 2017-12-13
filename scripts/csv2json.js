@@ -106,3 +106,13 @@ String.prototype.trim = function (characters) {
   characters = defaultToWhiteSpace(characters)
   return this.replace(new RegExp(`^${characters}+|${characters}+$`, 'g'), "")
 }
+
+function defaultToWhiteSpace(characters) {
+  if (characters == null) return '\\s'
+  else if (characters.source) return characters.source
+  else return '[' + escapeRegExp(characters) + ']'
+}
+
+function escapeRegExp(str) {
+  return str.replace(/([.*+?^=!:${}()|[\]\/\\])/g, "\\$1")
+}

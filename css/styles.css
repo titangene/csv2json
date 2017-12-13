@@ -1,3 +1,6 @@
-body {font-size: 24px;}
-input, select {font-size: 24px;}
-label {display: block;}
+body {font-size: 20px;}
+input, select {font-size: 20px;}
+h1, h3 {margin: 10px 0;}
+#btnGroup  {margin: 10px 0;}
+#textareaGroup label {width: 50%; float: left;}
+#textareaGroup textarea {width: 93%;}

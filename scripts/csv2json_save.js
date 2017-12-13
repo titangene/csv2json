@@ -1,11 +1,14 @@
 var fileText, csvObjects, jsonText
-var csvToJsonBtn = document.getElementById("csvToJsonBtn"),
-csvFileInput = document.getElementById("csvFileInput"),
-fileCharset = document.getElementById("charset"),
-fileTranspose = document.getElementById("transpose"),
-fileHash = document.getElementById("hash"),
-fileParseNumbers = document.getElementById("parseNumbers"),
-fileSeparator = document.getElementById("separator")
+var convertBtn = document.getElementById("convertBtn"),
+    downloadBtn = document.getElementById("downloadBtn"),
+    csvFileupload = document.getElementById("csvFileupload"),
+    fileCharset = document.getElementById("charset"),
+    fileTranspose = document.getElementById("transpose"),
+    fileHash = document.getElementById("hash"),
+    fileParseNumbers = document.getElementById("parseNumbers"),
+    fileSeparator = document.getElementById("separator")
+    inputCSV = document.getElementById("csv"),
+    outputJSON = document.getElementById("json")
 
 function getFile(files, charset) {
   var reader = new FileReader()
@@ -31,7 +34,8 @@ function processData(csvText) {
     separator: fileSeparator.value
   })
   jsonText = JSON.stringify(csvObjects, null, 2)
-  console.log(csvObjects)
+  inputCSV.value = csvText
+  outputJSON.value = jsonText
 }
 
 function saveJson(name) {
@@ -48,13 +52,21 @@ function uploadFile(files) {
   saveJson('data.json')
 }
 
-csvFileInput.onchange = function() {
+csvFileupload.onchange = function() {
   getFile(this.files, fileCharset)
 }
 
-csvToJsonBtn.onclick = function() {
-  if (csvFileInput.value) {
-    uploadFile(csvFileInput.files)
+convertBtn.onclick = function() {
+  if (csvFileupload.value) {
+    getFile(csvFileupload.files, fileCharset)
+  } else {
+    throw "Please upload CSV file"
+  }
+}
+
+downloadBtn.onclick = function() {
+  if (csvFileupload.value) {
+    saveJson('data.json')
   } else {
     throw "Please upload CSV file"
   }

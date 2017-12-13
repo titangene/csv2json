@@ -9,19 +9,28 @@
 
 <body>
 <h1>Csv To Json</h1>
-<label>upload CSV: <input type="file" id="csvFileInput" accept=".csv" multiple></label>
-<label>charset: 
-  <select id="charset">
-    <option value="" selected>UTF-8</option>
-    <option value="big5">Big5</option>
-  </select>
-</label>
-<label>transpose: <input type="checkbox" id="transpose"></label>
-<label>hash: <input type="checkbox" id="hash"></label>
-<label>parse numbers: <input type="checkbox" id="parseNumbers" checked></label>
-<label>separator: <input type="text" id="separator" size="2" value=","></label>
-<input type="button" id="csvToJsonBtn" value="Csv To Json">
-
+<label>upload CSV: <input type="file" id="csvFileupload" accept=".csv" multiple></label>
+<div id="optionGroup">
+  <h3>option: </h3>
+  <label>charset: 
+    <select id="charset">
+      <option value="" selected>UTF-8</option>
+      <option value="big5">Big5</option>
+    </select>
+  </label>
+  <label>transpose: <input type="checkbox" id="transpose"></label>
+  <label>hash: <input type="checkbox" id="hash"></label>
+  <label>parse numbers: <input type="checkbox" id="parseNumbers" checked></label>
+  <label>separator: <input type="text" id="separator" size="2" value=","></label>
+</div>
+<div id="btnGroup">
+  <input type="button" id="convertBtn" value="convert">
+  <input type="button" id="downloadBtn" value="download">
+</div>
+<div id="textareaGroup">
+  <label>CSV:<br><textarea id="csv" rows="42" cols="70"></textarea></label>
+  <label>JSON:<br><textarea id="json" rows="42" cols="70"></textarea></label>
+</div>
 <script src="scripts/csv2json.js"></script>
 <script src="scripts/csv2json_save.js"></script>
 </body>
